@@ -2,12 +2,12 @@
   "fname": "Rachel",
   "lname": "Rogers",
   "title": "CEO",
-  "photo": "http://lorempixel.com/60/60/cats/1",
+  "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_37.png",
   "children": [{
         "fname": "Bob",
         "lname": "Smith",
         "title": "President",
-        "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/histogram/histogram_37.png",
+        "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_37.png",
         "children": [{
               "fname": "Mary",
               "lname": "Jane",
