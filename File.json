@@ -1,21 +1,21 @@
 {
   "fname": "Rachel",
-  "lname": "Rogers",
+
   "title": "CEO",
   "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_1.png",
   "children": [{
         "fname": "Bob",
-        "lname": "Smith",
+        
         "title": "President",
         "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_2.png",
         "children": [{
               "fname": "Mary",
-              "lname": "Jane",
+
               "title": "Vice President",
               "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_3.png",
               "children": [{
                 "fname": "Bill",
-                "lname": "August",
+
                 "title": "Dock Worker",
                 "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_4.png"
               }, {
