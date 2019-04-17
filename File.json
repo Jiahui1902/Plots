@@ -7,28 +7,28 @@
         "fname": "Bob",
         "lname": "Smith",
         "title": "President",
-        "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/histogram/histogram_37.png",
+        "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_37.png",
         "children": [{
               "fname": "Mary",
               "lname": "Jane",
               "title": "Vice President",
-              "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/histogram/histogram_37.png",
+              "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_36.png",
               "children": [{
                 "fname": "Bill",
                 "lname": "August",
                 "title": "Dock Worker",
-                "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/histogram/histogram_37.png"
+                "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_35.png",
               }, {
                 "fname": "Reginald",
                 "lname": "Yoyo",
                 "title": "Line Assembly",
-                "photo": "http://lorempixel.com/60/60/cats/5"
+                "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_34.png",
               }]
             }, {
               "fname": "Nathan",
               "lname": "Ringwald",
               "title": "Comptroller",
-              "photo": "http://lorempixel.com/60/60/cats/6"
+              "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_33.png",
             }]
   }]
 }
