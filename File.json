@@ -2,7 +2,7 @@
   "fname": "Rachel",
   "lname": "Rogers",
   "title": "CEO",
-  "photo": "http://lorempixel.com/60/60/cats/1",
+  "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_7.png",
   "children": [{
         "fname": "Bob",
         "lname": "Smith",
