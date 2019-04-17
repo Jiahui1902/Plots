@@ -5,7 +5,7 @@
   "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_1.png",
   "children": [{
         "fname": "Bob",
-        
+        "lname": "Bob",
         "title": "President",
         "photo": "https://raw.githubusercontent.com/Jiahui1902/Plots/master/piechart/piechart_2.png",
         "children": [{
