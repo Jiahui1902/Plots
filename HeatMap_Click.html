@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="http://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<body>
+<head>Note: Nested Heatmap, Causal Tree (1:4 matching in leaves)</head>
+</body>
+
+
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 50, right: 30, bottom: 50, left: 100},
+  width = 700 - margin.left - margin.right,
+  height = 700 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+.append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+.append("g")
+  .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+
+// Labels of row and columns
+// var myGroups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+// var myVars = ["v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10"]
+
+var myGroups = [' 1 ',' 2 ',' 3 ','  Low  ','  Mid  ','  High  ','   Low   ','   Mid   ','   High   ','    1    ','    2    ','    3    ','      1      ','      2      ','      3      ']
+// var myVars = ["Low","Mid","High"]
+// var myVars = ["1","2","3"]
+var myVars = [' 1 ',' 2 ',' 3 ','  Low  ','  Mid  ','  High  ','   Low   ','   Mid   ','   High   ','    1    ','    2    ','    3    ','      1      ','      2      ','      3      ']
+
+// Build X scales and axis:
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(myGroups)
+  .padding(0.01);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/30*3) + " ," + 
+                           (height + margin.top -5) +")")
+      .style("text-anchor", "middle")
+      .text("3 cat. p-score col. comp. age 25")
+      .style("font-size", "11px");
+
+svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/30*9) + " ," + 
+                           (height + margin.top -5) +")")
+      .style("text-anchor", "middle")
+      .text("Tertiles ability")
+      .style("font-size", "11px");
+
+svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/30*15) + " ," + 
+                           (height + margin.top -5) +")")
+      .style("text-anchor", "middle")
+      .text("Tertiles par. inc.")
+      .style("font-size", "11px");
+
+svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/30*21) + " ," + 
+                           (height + margin.top -5) +")")
+      .style("text-anchor", "middle")
+      .text("3 cat. mom's edu.")
+      .style("font-size", "11px");
+
+svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/30*27) + " ," + 
+                           (height + margin.top -5) +")")
+      .style("text-anchor", "middle")
+      .text("3-category race")
+      .style("font-size", "11px");
+
+
+// Build X scales and axis:
+var y = d3.scaleBand()
+  .range([ height, 0 ])
+  .domain(myVars)
+  .padding(0.01);
+svg.append("g")
+  .call(d3.axisLeft(y));
+
+
+  // text label for the y axis
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left+55)
+      .attr("x",0 - (height / 30*27))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("3 cat. p-score col. comp. age 25")
+      .style("font-size", "11px");      
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left+55)
+      .attr("x",0 - (height / 30*21))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Tertiles ability")
+      .style("font-size", "11px");      
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left+55)
+      .attr("x",0 - (height / 30*15))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Tertiles par. inc.")
+      .style("font-size", "11px");      
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left+55)
+      .attr("x",0 - (height / 30*9))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("3 cat. mom's edu.")
+      .style("font-size", "11px");      
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left+55)
+      .attr("x",0 - (height / 30*3))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("3-category race")
+      .style("font-size", "11px");         
+
+
+// Build color scale
+var myColor = d3.scaleLinear()
+  // .range(["white", "#69b3a2"])
+  .range(["blue", "Red"])
+  .domain([1,100])
+
+//Read the data
+// d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
+
+d3.csv("https://raw.githubusercontent.com/Jiahui1902/Plots/master/File2.csv", function(data) {
+
+  // create a tooltip
+  var tooltip = d3.select("#my_dataviz")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
+    .style("position", "absolute")
+
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var mouseover = function(d) {
+    tooltip.style("opacity", 1);
+  }
+  var mousemove = function(d) {
+    tooltip
+      .html("The estimated treatment effect in this cell is: " + d.value)
+      .style("left", (d3.mouse(this)[0]+70) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px");
+  }
+  var mouseleave = function(d) {
+    tooltip.style("opacity", 0);
+  }
+
+  // add the squares
+  svg.selectAll()
+    .data(data, function(d) {return d.group+':'+d.variable;})
+    .enter()
+    .append("rect")
+      .attr("x", function(d) { return x(d.group) })
+      .attr("y", function(d) { return y(d.variable) })
+      .attr("width", x.bandwidth() )
+      .attr("height", y.bandwidth() )
+      // .style("fill", function(d) { return myColor(d.value)} )
+      // .style("fill", '#fff8ee' )
+      .style("fill", 'white')
+      .style("stroke", 'lightsteelblue')
+      // .on("click", function(d) {
+      .on("click", function(d) {
+  // d3.select(this).attr("r", 10).style("fill", "#fff8ee");
+  
+  // d3.select(this).attr("r", 5.5).style("fill", function(d) {return myColor(d.value)} );
+  d3.select(this).attr("r", 5.5).style("fill", function(d) {return d.color} );
+
+})    
+//       .on("mouseout", function(d) {
+//   // d3.select(this).attr("r", 10).style("fill", "#fff8ee");
+  
+//   // d3.select(this).attr("r", 5.5).style("fill", function(d) {return myColor(d.value)} );
+//   d3.select(this).attr("r", 5.5).style("fill", function(d) {return d.color} );
+
+// })          
+      // .on("mouseout", function(d) {
+      // // d3.select(this).attr("r", 5.5).style("fill", "#fff8ee");
+      // d3.select(this).attr("r", 5.5).style("fill", function(d) {return myColor(d.value)} );
+      //  })
+
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave)
+    
+})
+
+</script>
